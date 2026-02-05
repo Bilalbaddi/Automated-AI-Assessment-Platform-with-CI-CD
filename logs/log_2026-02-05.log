@@ -1,0 +1,20 @@
+2026-02-05 22:04:41,689 - INFO - Generating question for topic Machine Leraning with difficulty medium
+2026-02-05 22:04:42,601 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-02-05 22:04:42,620 - INFO - Sucesfully parsed the question
+2026-02-05 22:04:42,620 - INFO - Generated a valid MCQ Question
+2026-02-05 22:04:42,620 - INFO - Generating question for topic Machine Leraning with difficulty medium
+2026-02-05 22:04:43,459 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-02-05 22:04:43,460 - INFO - Sucesfully parsed the question
+2026-02-05 22:04:43,476 - INFO - Generated a valid MCQ Question
+2026-02-05 22:04:43,476 - INFO - Generating question for topic Machine Leraning with difficulty medium
+2026-02-05 22:04:44,083 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-02-05 22:04:44,086 - INFO - Sucesfully parsed the question
+2026-02-05 22:04:44,086 - INFO - Generated a valid MCQ Question
+2026-02-05 22:04:44,086 - INFO - Generating question for topic Machine Leraning with difficulty medium
+2026-02-05 22:04:44,684 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-02-05 22:04:44,684 - INFO - Sucesfully parsed the question
+2026-02-05 22:04:44,692 - INFO - Generated a valid MCQ Question
+2026-02-05 22:04:44,692 - INFO - Generating question for topic Machine Leraning with difficulty medium
+2026-02-05 22:04:45,572 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-02-05 22:04:45,572 - INFO - Sucesfully parsed the question
+2026-02-05 22:04:45,572 - INFO - Generated a valid MCQ Question
