@@ -48,7 +48,7 @@ pipeline {
                     withCredentials([usernamePassword(credentialsId: 'github-token', usernameVariable: 'GIT_USER', passwordVariable: 'GIT_PASS')]) {
                         sh '''
                         git config user.name "Bilalbaddi"
-                        git config user.email "gyrogodnon@gmail.com"
+                        git config user.email "bilalbaddi7@gmail.com"
                         
                         git add manifests/deployment.yaml
                         git commit -m "Update image tag to ${IMAGE_TAG}" || echo "No changes to commit"
