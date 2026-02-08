@@ -34,9 +34,9 @@ pipeline {
         stage('Update Deployment YAML with New Tag') {
             steps {
                 script {
-                    // This command finds "image: (anything)" and replaces it with "image: bilal1045/studyai:v(number)"
+                    // Uses double quotes to safely replace the image line
                     sh """
-                    sed -i 's|image: .*|image: ${DOCKER_HUB_REPO}:${IMAGE_TAG}|' manifests/deployment.yaml
+                    sed -i "s|image: .*|image: ${DOCKER_HUB_REPO}:${IMAGE_TAG}|" manifests/deployment.yaml
                     """
                 }
             }
@@ -49,11 +49,11 @@ pipeline {
                         sh '''
                         git config user.name "Bilalbaddi"
                         git config user.email "bilalbaddi7@gmail.com"
-                        
                         git add manifests/deployment.yaml
-                        git commit -m "Update image tag to ${IMAGE_TAG}" || echo "No changes to commit"
                         
-                        # VERIFIED: Pushing to YOUR repository with authentication
+                        # CRITICAL FIX: Added [skip ci] to stop the infinite loop
+                        git commit -m "Update image tag to ${IMAGE_TAG} [skip ci]" || echo "No changes to commit"
+                        
                         git push https://${GIT_USER}:${GIT_PASS}@github.com/Bilalbaddi/Automated-AI-Assessment-Platform-with-CI-CD.git HEAD:main
                         '''
                     }
