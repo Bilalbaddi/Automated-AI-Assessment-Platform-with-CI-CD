@@ -9,6 +9,7 @@ pipeline {
         stage('Checkout Github') {
             steps {
                 echo 'Checking out code from GitHub...'
+                // VERIFIED: Using your correct repository URL
                 checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: 'github-token', url: 'https://github.com/Bilalbaddi/Automated-AI-Assessment-Platform-with-CI-CD.git']])
             }
         }        
@@ -33,8 +34,9 @@ pipeline {
         stage('Update Deployment YAML with New Tag') {
             steps {
                 script {
+                    // This command finds "image: (anything)" and replaces it with "image: bilal1045/studyai:v(number)"
                     sh """
-                    sed -i 's|image: dataguru97/studybuddy:.*|image: dataguru97/studybuddy:${IMAGE_TAG}|' manifests/deployment.yaml
+                    sed -i 's|image: .*|image: ${DOCKER_HUB_REPO}:${IMAGE_TAG}|' manifests/deployment.yaml
                     """
                 }
             }
@@ -45,11 +47,14 @@ pipeline {
                 script {
                     withCredentials([usernamePassword(credentialsId: 'github-token', usernameVariable: 'GIT_USER', passwordVariable: 'GIT_PASS')]) {
                         sh '''
-                        git config user.name "data-guru0"
+                        git config user.name "Bilalbaddi"
                         git config user.email "gyrogodnon@gmail.com"
+                        
                         git add manifests/deployment.yaml
                         git commit -m "Update image tag to ${IMAGE_TAG}" || echo "No changes to commit"
-                        git push https://${GIT_USER}:${GIT_PASS}@github.com/data-guru0/STUDY-BUDDY-AI.git HEAD:main
+                        
+                        # VERIFIED: Pushing to YOUR repository with authentication
+                        git push https://${GIT_USER}:${GIT_PASS}@github.com/Bilalbaddi/Automated-AI-Assessment-Platform-with-CI-CD.git HEAD:main
                         '''
                     }
                 }
@@ -70,8 +75,10 @@ pipeline {
         stage('Apply Kubernetes & Sync App with ArgoCD') {
             steps {
                 script {
+                    // Make sure the Minikube IP (192.168.49.2) is correct for your setup
                     kubeconfig(credentialsId: 'kubeconfig', serverUrl: 'https://192.168.49.2:8443') {
                         sh '''
+                        # Ensure the IP 3.83.242.72 is your correct ArgoCD server IP
                         argocd login 3.83.242.72:31704 --username admin --password $(kubectl get secret -n argocd argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d) --insecure
                         argocd app sync sttudy
                         '''
