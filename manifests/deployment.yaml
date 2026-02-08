@@ -16,9 +16,9 @@ spec:
       containers:
       - name: llmops-app
 <<<<<<< HEAD
-        image: bilal1045/studyai:v21
+        image: bilal1045/studyai:v22
 =======
-        image: bilal1045/studyai:v21
+        image: bilal1045/studyai:v22
 >>>>>>> 6ea21d8622e0e15ae2e1a8d8d9b2a6b84f10febe
         ports:
         - containerPort: 8501
